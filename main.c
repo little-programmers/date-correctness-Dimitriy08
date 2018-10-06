@@ -6,7 +6,7 @@ bool date_correctness(int day, int month, int year) {
 		if (year < 0 || month <= 0 || month > 12) {
 			return false;
 		}
-		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+		if (year % 4 == 0 && year % 100 != 0 || (year % 400 == 0)) {
 			if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
 				if (day > 0 && day <= 31)
 					return true;
@@ -26,7 +26,7 @@ bool date_correctness(int day, int month, int year) {
 					return false;
 			}
 		}
-		else 
+		else {
 			if (month == 2) {
 				if (day > 0 && day < 29)
 					return true;
@@ -47,7 +47,7 @@ bool date_correctness(int day, int month, int year) {
 				else
 					return false;
 			}
-		
+		}
 	}
 
 void test_date_correctness() {
