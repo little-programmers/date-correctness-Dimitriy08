@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdbool.h>
-#include <locale.h>
 
 bool date_correctness(int day, int month, int year) {
 	{
@@ -66,7 +65,6 @@ void test_date_correctness() {
 	assert(!date_correctness(2, 13, 2001));
 	assert(!date_correctness(40, 5, 777));
 	assert(!date_correctness(29, 2, 1900));
-	setlocale(LC_ALL, "Rus");
 	printf("Тесты прошли успешно!\n");
 }
 
