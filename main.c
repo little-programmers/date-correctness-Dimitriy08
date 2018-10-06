@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <assert.h>
 #include <stdbool.h>
 
@@ -6,46 +6,48 @@ bool date_correctness(int day, int month, int year) {
 	if (year < 0 || month <= 0 || month > 12) {
 		return false;
 	}
-	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
 		if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
-			if (day > 0 && day <= 31) 
+			if (day > 0 && day <= 31)
 				return true;
 			else
 				return false;
 		}
-		if (month == 4 || month == 6 || month == 9 || month == 11) {
+		else if (month == 4 || month == 6 || month == 9 || month == 11) {
 			if (day > 0 && day < 31)
 				return true;
 			else
 				return false;
 		}
-		if (month == 2) {
+		else if (month == 2) {
 			if (day > 0 && day <= 29)
 				return true;
 			else
 				return false;
 		}
-		else {
-			if (month == 2) {
-				if (day > 0 && day < 29)
-					return true;
-				else
-					return false;
-			}
-			if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)	{
-				if (day > 0 && day <= 31)
-					return true;
-				else
-					return false;
-			}
-			if (month == 4 || month == 6 || month == 9 || month == 11)	{
-				if (day > 0 && day < 31)
-					return true;
-				else
-					return false;
-			}
-		}
 	}
+	else
+		if (month == 2) {
+			if (day > 0 && day < 29)
+				return true;
+			else
+				return false;
+		}
+		else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+		{
+			if (day > 0 && day <= 31)
+				return true;
+			else
+				return false;
+		}
+		else if (month == 4 || month == 6 || month == 9 || month == 11)
+		{
+			if (day > 0 && day < 31)
+				return true;
+			else
+				return false;
+		}
+	return false;
 }
 
 void test_date_correctness() {
@@ -62,7 +64,7 @@ void test_date_correctness() {
 	assert(!date_correctness(40, 5, 777));
 	assert(!date_correctness(29, 2, 1900));
 
-	printf("Òåñòû ïğîøëè óñïåøíî!\n");
+	printf("Ã’Ã¥Ã±Ã²Ã» Ã¯Ã°Ã®Ã¸Ã«Ã¨ Ã³Ã±Ã¯Ã¥Ã¸Ã­Ã®!\n");
 }
 
 int main() {
