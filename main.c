@@ -3,54 +3,52 @@
 #include <stdbool.h>
 
 bool date_correctness(int day, int month, int year) {
-	{
-		if (year < 0 || month < 0 || month > 12) {
-			return 0;
+		if (year < 0 || month <= 0 || month > 12) {
+			return false;
 		}
 		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
 			if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
 				if (day > 0 && day <= 31)
-					return 1;
+					return true;
 				else
-					return 0;
+					return false;
 			}
 			else if (month == 4 || month == 6 || month == 9 || month == 11) {
 				if (day > 0 && day < 31)
-					return 1;
+					return true;
 				else
-					return 0;
+					return false;
 			}
 			else if (month == 2) {
 				if (day > 0 && day <= 29)
-					return 1;
+					return true;
 				else
-					return 0;
+					return false;
 			}
 		}
 		else {
 			if (month == 2) {
 				if (day > 0 && day < 29)
-					return 1;
+					return true;
 				else
-					return 0;
+					return false;
 			}
 			else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
 			{
 				if (day > 0 && day <= 31)
-					return 1;
+					return true;
 				else
-					return 0;
+					return false;
 			}
 			else if (month == 4 || month == 6 || month == 9 || month == 11)
 			{
 				if (day > 0 && day < 31)
-					return 1;
+					return true;
 				else
-					return 0;
+					return false;
 			}
 		}
 	}
-}
 
 void test_date_correctness() {
 	assert(date_correctness(1, 1, 2018));
@@ -65,6 +63,7 @@ void test_date_correctness() {
 	assert(!date_correctness(2, 13, 2001));
 	assert(!date_correctness(40, 5, 777));
 	assert(!date_correctness(29, 2, 1900));
+
 	printf("Тесты прошли успешно!\n");
 }
 
